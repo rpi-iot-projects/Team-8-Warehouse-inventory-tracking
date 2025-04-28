@@ -1,0 +1,48 @@
+<!-- server dependence: npm, node, express, cors, path -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory Management App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; width: 100%;}
+    th, td { width: 13.6%; }
+    .long { width: 25%; }
+    .short { width: 7%; }
+    #reportImage { display: none; max-width: 100%; margin-top: 20px; }
+    #backButton { display: none; }
+    #dataSection { margin-top: 20px; }
+    #deleteButton { text-align: center; }
+    th[readonly], td[readonly] { background-color: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h1>Inventory Management</h1>
+  <input type="file" id="csvFile" accept=".csv" />
+  <button onclick="downloadCSV()">Save CSV</button>
+  <button onclick="addRow()">Add Row</button>
+  <button id="generateReport" onclick="generateReport()">Generate Report</button>
+  <button id="backButton" onclick="backToData()">Back to Data</button>
+  <div id="dataSection">
+    <table id="inventoryTable">
+      <thead>
+        <tr>
+          <th class="long">Item Code</th>
+          <th>Item Weight</th>
+          <th>Item Price</th>
+          <th>Total Weight</th>
+          <th>Item Count</th>
+          <th>Timestamp</th>
+          <th class="short">Delete</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <img id="reportImage" src="./plot.png" alt="Report">
+
+  <script src="./functions.js"></script>
+</body>
+</html>
